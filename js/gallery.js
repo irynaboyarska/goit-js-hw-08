@@ -65,16 +65,13 @@ const images = [
 ];
 
 
-const refs = {
+document.addEventListener(`DOMContentLoaded`, () => {
+    const refs = {
     container: document.querySelector(`.gallery`),
 }
-
-document.addEventListener(`DOMContentLoaded`, () => {
     const markup = imagesTemplate(images);
     refs.container.innerHTML = markup;
-});
-
-refs.container.addEventListener(`click`, (e) => {
+    refs.container.addEventListener(`click`, (e) => {
         e.preventDefault();
 
         if (e.target.nodeName !== `IMG`) {
@@ -85,6 +82,7 @@ refs.container.addEventListener(`click`, (e) => {
 
     const instance = basicLightbox.create(`<img src="${e.target.dataset.source}" alt="${e.target.alt}"/>`);
     instance.show();
+});
 });
 
 function imageTemplate(image) {
